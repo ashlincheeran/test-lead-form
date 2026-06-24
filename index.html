@@ -215,9 +215,10 @@
   </div>
 
   <script>
-    const ASSET_ID = '63171df635754b46a4294287';
-    const FORM_ID  = '6a3b686d0c7d4fe74ba1c8d1';
-    const API_URL  = 'https://api.cencorpcms.com/forms/entries';
+    const ASSET_ID   = '63171df635754b46a4294287';
+    const FORM_ID    = '6a3b686d0c7d4fe74ba1c8d1';
+    const API_URL    = 'https://api.cencorpcms.com/forms/entries';
+    const API_TOKEN  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTdiMGYxMWUyNTM1ZWZjMzk2ZWIwM2UiLCJlbWFpbCI6IjNjMmUzMDdmLTRlNzQtNDEzMi04YzFhLTYxMTZlMzE1YzMyM0BhcGkuY2VuY29ycGNtcy5rZXkiLCJ0eXBlIjoiYXBpS2V5IiwiYWNjZXNzVHlwZSI6ImFwcCIsImlhdCI6MTc2OTY3MjQ2NX0.eTM5YeBRh6NylXa4SPPN_RJCigagZKAeDhjGxbheTJQ';
 
     function getUtmParams() {
       const p = new URLSearchParams(window.location.search);
@@ -289,7 +290,10 @@
       try {
         const res = await fetch(API_URL, {
           method:  'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + API_TOKEN,
+          },
           body:    JSON.stringify(payload),
         });
 
